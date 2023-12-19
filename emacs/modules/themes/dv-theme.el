@@ -80,8 +80,10 @@ The variation is either a shade, a tint, or the saturation of the colour."
  ;; EMACS
 
  `(isearch ((t (:inverse-video t))))
-
- `(minibuffer-prompt            ((t (:foreground ,(dv/get-colour 'blue 4)))))
+ `(header-line ((t (:inherit dv/modeline-default))))
+ `(minibuffer-prompt ((t (:foreground ,(dv/get-colour 'blue 4)))))
+ 
+ `(completions-annotations ((t (:italic t))))
  `(completions-common-part      ((t (:foreground ,(dv/get-colour 'mid  1) :background nil))))
  `(completions-first-difference ((t (:inherit minibuffer-prompt :bold t :underline t))))
 
@@ -94,8 +96,6 @@ The variation is either a shade, a tint, or the saturation of the colour."
 
  `(vertical-border ((t (:inherit shadow :foreground ,(dv/get-colour 'dark 2)))))
  `(separator-line ((t (:inherit default :extend t))))
-
- `(header-line ((t (:inherit dv/modeline-default))))
 
  ; ;; --------
  ; ;; PACKAGES
@@ -122,10 +122,19 @@ The variation is either a shade, a tint, or the saturation of the colour."
  `(which-key-key-face		      ((t (:foreground ,(dv/get-colour 'orange 4) :bold t))))
  `(which-key-group-description-face   ((t (:foreground ,(dv/get-colour 'orange 4) :bold nil))))
  `(which-key-command-description-face ((t (:foreground ,(dv/get-colour 'blue   4)))))
+ 
+ `(corfu-current ((t :inherit highlight :foreground nil)))
 
  `(vertico-current ((t (:inherit highlight :foreground nil))))
-
- `(corfu-current ((t :inherit highlight :foreground nil)))
+ `(vertico-group-separator ((t (:background "#121212" :underline (:position -5)))))
+ `(vertico-group-title ((t (:background "#121212" :bold t :underline (:position -5)))))
+ 
+ `(consult-highlight-mark ((t (:underline t))))
+ `(consult-highlight-match ((t (:underline t))))
+ `(consult-projectile-projects ((t (nil))))
+ `(consult-bookmark ((t (nil))))
+ `(consult-buffer ((t (nil))))
+ `(consult-file ((t (nil))))
 
  `(orderless-match-face-0 ((t (:inherit completions-first-difference :foreground "#ff8ad5" :underline nil))))
  `(orderless-match-face-1 ((t (:inherit orderless-match-face-0))))

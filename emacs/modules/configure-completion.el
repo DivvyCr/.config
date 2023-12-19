@@ -7,15 +7,25 @@
   :bind (:map vertico-map
 	      ("<tab>" . minibuffer-complete)
 	      ("C-<return>" . vertico-insert)
-	      ("<return>" . vertico-exit))
+	      ("<return>" . vertico-exit)
+	      ("C-n" . vertico-next)
+	      ("C-p" . vertico-previous)
+	      ("M-n" . vertico-next-group)
+	      ("M-p" . vertico-previous-group))
   :init
   (vertico-mode)
   (vertico-multiform-mode)
-  :custom
-  (vertico-resize t)
-  (vertico-cycle nil)
-  (vertico-multiform-categories
-   '((t reverse)))
+  :config
+  (setq vetrico-count 8)
+  (setq vertico-resize t)
+  (setq vertico-cycle nil)
+  (setq vertico-multiform-categories
+	'((t reverse)))
+
+  (defun dv/vertico-candidate-padding (f cand prefix suffix index _start)
+    "Add a space as padding to the left of each candidate."
+    (funcall f cand (concat " " prefix) suffix index _start))
+  (advice-add #'vertico--format-candidate :around #'dv/vertico-candidate-padding)
   )
 
 (use-package marginalia
@@ -24,20 +34,20 @@
   )
 
 (use-package orderless
-  :custom
-  (completion-styles
-   '(basic substring orderless))
+  :config
+  (setq completion-styles
+	'(basic substring orderless))
 
-  (orderless-matching-styles
-   '(orderless-flex orderless-prefixes orderless-regexp))
+  (setq orderless-matching-styles
+	'(orderless-flex orderless-prefixes orderless-regexp))
 
-  (orderless-affix-dispatch-alist
-   '((?= . orderless-literal)
-     (?, . orderless-initialism)))
+  (setq orderless-affix-dispatch-alist
+	'((?= . orderless-literal)
+	  (?, . orderless-initialism)))
 
-  (completion-category-defaults nil)
-  (completion-category-overrides
-   '((file (styles . (basic partial-completion orderless)))))
+  (setq completion-category-defaults nil)
+  (setq completion-category-overrides
+	'((file (styles . (basic partial-completion orderless)))))
   )
 
 (use-package corfu
@@ -47,10 +57,9 @@
   :init
   (global-corfu-mode)
   (corfu-popupinfo-mode)
-  :custom
-  (corfu-auto t)
-  (corfu-popupinfo-delay '(1.5 . 1.0))
   :config
+  (setq corfu-auto t)
+  (setq corfu-popupinfo-delay '(1.5 . 1.0))
   (defun corfu-enable-always-in-minibuffer ()
     "Enable Corfu in the minibuffer if Vertico is not active.
 Useful for prompts such as `eval-expression' and `shell-command'."

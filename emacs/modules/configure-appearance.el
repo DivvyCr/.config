@@ -31,6 +31,12 @@
 (require 'dv-modeline)
 (with-eval-after-load 'all-the-icons (dv/modeline))
 
+(setq vertico-group-format (concat
+          (all-the-icons-faicon "caret-up" :face 'vertico-group-title)
+          #(" %s "
+      0 3 (face vertico-group-title)
+      3 4 (display (space :align-to right) face vertico-group-separator))))
+
 (use-package which-key
   :init (which-key-mode))
 
