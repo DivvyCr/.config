@@ -38,13 +38,14 @@
   "" '(nil :which-key "Leader") ;; Unbind `dv/leader-key' to use as a prefix
   dv/leader-key #'evil-ex ;; Double-tap leader for `evil-ex'
 
-  "b" #'ibuffer
-  "d" #'(lambda () (interactive) (dired "."))
-  "o" #'delete-other-windows
-  "q" #'evil-quit
-  "w" #'evil-write
+  "b" #'(ibuffer :which-key "IBuffer")
+  "d" #'((lambda () (interactive) (dired ".")) :which-key "Dired")
+  "o" #'(delete-other-windows :which-key "Only")
+  "q" #'(evil-quit :which-key "Quit")
+  "s" #'(jinx-correct :which-key "Spelling") ;; NOTE: Use with C-u for whole buffer
+  "w" #'(evil-write :which-key "Write")
   "/" #'consult-line
-  "`" #'(lambda () (interactive) (load-file (buffer-file-name)))
+  "`" #'((lambda () (interactive) (load-file (buffer-file-name))) :which-key "Load")
   )
 
 ;; My context-switch keybinds:
@@ -86,6 +87,8 @@
 (general-def '(normal visual motion)
   "j" #'evil-next-visual-line
   "k" #'evil-previous-visual-line
+  "]s" #'jinx-next
+  "[s" #'jinx-previous
   )
 
 ;; Un-binds:

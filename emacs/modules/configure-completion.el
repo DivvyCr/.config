@@ -1,3 +1,17 @@
+;;
+;; Spell-checking:
+;;
+
+(use-package jinx
+  :init
+  (global-jinx-mode)
+  :config
+  (setq jinx-languages "en_GB"))
+
+;;
+;; Completion:
+;;
+
 (setq completion-ignore-case t
       completion-cycle-threshold 3
       read-buffer-completion-ignore-case t
@@ -20,17 +34,13 @@
   (setq vertico-resize t)
   (setq vertico-cycle nil)
   (setq vertico-multiform-categories
-	'((t reverse)))
+	'((jinx grid (vertico-grid-annotate . 10))
+	  (t reverse)))
 
   (defun dv/vertico-candidate-padding (f cand prefix suffix index _start)
     "Add a space as padding to the left of each candidate."
     (funcall f cand (concat " " prefix) suffix index _start))
   (advice-add #'vertico--format-candidate :around #'dv/vertico-candidate-padding)
-  )
-
-(use-package marginalia
-  :init
-  (marginalia-mode)
   )
 
 (use-package orderless
@@ -68,6 +78,9 @@ Useful for prompts such as `eval-expression' and `shell-command'."
 
   (add-hook 'minibuffer-setup-hook #'corfu-enable-always-in-minibuffer 1)
   )
+
+(use-package marginalia
+  :init (marginalia-mode))
 
 ;; TODO:
 ; (use-package embark)
