@@ -12,6 +12,7 @@
 (require 'configure-navigation)
 (require 'configure-completion)
 (require 'configure-tex)
+(require 'configure-web)
 (require 'configure-coding)
 (require 'configure-keybinds)
 (require 'configure-appearance)

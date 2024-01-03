@@ -33,7 +33,7 @@
   )
 
 ;; My utility keybinds:
-(general-def '(normal visual motion)
+(general-def '(normal visual motion) dv/keymap
   :prefix dv/leader-key
   "" '(nil :which-key "Leader") ;; Unbind `dv/leader-key' to use as a prefix
   dv/leader-key #'evil-ex ;; Double-tap leader for `evil-ex'
@@ -49,7 +49,7 @@
   )
 
 ;; My context-switch keybinds:
-(general-def '(normal visual motion)
+(general-def '(normal visual motion) dv/keymap
   :prefix dv/switcher-key
   "" '(nil :which-key "Navigation") ;; Unbind `SPC' to use as a prefix
   dv/switcher-key #'consult-projectile

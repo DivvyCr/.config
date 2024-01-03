@@ -52,6 +52,8 @@ The variation is either a shade, a tint, or the saturation of the colour."
  `(warning ((t (:foreground ,(dv/get-colour 'orange 3)))))
  `(success ((t (:foreground ,(dv/get-colour 'green  2)))))
 
+ `(variable-pitch ((t (:font "CaskaydiaMono Nerd Font-14.0"))))
+
  ;; ------
  ;; SYNTAX
 
@@ -96,6 +98,21 @@ The variation is either a shade, a tint, or the saturation of the colour."
 
  `(vertical-border ((t (:inherit shadow :foreground ,(dv/get-colour 'dark 2)))))
  `(separator-line ((t (:inherit default :extend t))))
+
+ `(message-header-name ((t (:inherit font-lock-keyword-face))))
+ `(message-header-subject ((t (:inherit default :bold t :font "CaskaydiaMono Nerd Font-15.0"))))
+ `(message-header-to ((t (:inherit font-lock-doc-face))))
+ `(message-header-cc ((t (:inherit font-lock-string-face))))
+ `(message-header-newsgroups ((t (:inherit font-lock-warning-face))))
+ `(message-header-other ((t (:inherit font-lock-builtin-face :italic t))))
+ `(message-header-xheader ((t (:inherit message-header-other))))
+
+ `(shr-h6 ((t (:inherit shr-text :foreground ,(dv/get-colour 'blue 3)))))
+ `(shr-h5 ((t (:inherit shr-h6))))
+ `(shr-h4 ((t (:inherit shr-h6))))
+ `(shr-h3 ((t (:inherit shr-h6 :bold t))))
+ `(shr-h2 ((t (:foreground ,(dv/get-colour 'blue 2) :bold t :height 1.2))))
+ `(shr-h1 ((t (:foreground ,(dv/get-colour 'blue 1) :bold t :height 1.4))))
 
  ; ;; --------
  ; ;; PACKAGES
@@ -143,6 +160,12 @@ The variation is either a shade, a tint, or the saturation of the colour."
 
  `(marginalia-documentation ((t (:inherit font-lock-doc-face :background nil))))
  `(marginalia-file-priv-no  ((t (:foreground nil :background nil))))
+
+ `(elfeed-search-date-face ((t (:inherit font-lock-comment-face))))
+ `(elfeed-search-feed-face ((t (:inherit font-lock-string-face))))
+ `(elfeed-search-tag-face ((t (:inherit font-lock-type-face))))
+ `(elfeed-search-title-face ((t (:foreground ,(dv/get-colour 'light 1) :bold nil))))
+ `(elfeed-search-unread-title-face ((t (:inherit default :bold t))))
 
  `(lsp-headerline-breadcrumb-separator-face ((t (:background "#121212" :height 0.8))))
  `(lsp-face-semhl-default-library ((t (:foreground nil :background nil))))
